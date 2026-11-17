@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suppressions xmlns="https://jeremylong.github.io/DependencyCheck/dependency-suppression.1.4.xsd">
+
+  <!--
+    Motivo: falso positivo. CPE equivocado.
+    Evidencia: Dependency-Check asigna a spring-boot-devtools los CPE
+    vmware:spring_tools y vmware:spring_boot_tools. CVE-2022-31691 afecta a
+    Spring Tools 4 para Eclipse (<= 4.16.0) y a extensiones de VS Code
+    (Spring Boot Tools, Concourse CI Pipeline Editor), no a la librería
+    spring-boot-devtools 4.1.x que declara el pom.
+    Revisado por: cmpiedrahita
+    Fecha de revisión: 2026-11-17
+  -->
+  <suppress until="2027-02-17Z">
+    <notes><![CDATA[
+      Falso positivo: CVE-2022-31691 es de Spring Tools (IDE), no de spring-boot-devtools.
+    ]]></notes>
+    <packageUrl regex="true">^pkg:maven/org\.springframework\.boot/spring-boot-devtools@.*$</packageUrl>
+    <vulnerabilityName>CVE-2022-31691</vulnerabilityName>
+  </suppress>
+
+  <!--
+    Motivo: aceptación temporal de riesgo, no es falso positivo.
+    Evidencia: CVE-2026-60586 (7.7) y CVE-2026-60623 (7.1) afectan a
+    mysql-connector-j 9.7.0-9.7.1. 9.7.0 es la última versión publicada en
+    Maven Central (revisado el 2026-11-17), así que no hay versión corregida.
+    El driver solo se usa con el perfil "mysql"; el perfil por defecto usa H2.
+    Revisado por: cmpiedrahita
+    Fecha de revisión: 2026-11-17
+  -->
+  <suppress until="2027-02-17Z">
+    <notes><![CDATA[
+      Sin versión corregida en Maven Central. Actualizar mysql-connector-j en cuanto exista una versión posterior a 9.7.1.
+    ]]></notes>
+    <packageUrl regex="true">^pkg:maven/com\.mysql/mysql-connector-j@.*$</packageUrl>
+    <vulnerabilityName>CVE-2026-60586</vulnerabilityName>
+  </suppress>
+
+  <suppress until="2027-02-17Z">
+    <notes><![CDATA[
+      Sin versión corregida en Maven Central. Actualizar mysql-connector-j en cuanto exista una versión posterior a 9.7.1.
+    ]]></notes>
+    <packageUrl regex="true">^pkg:maven/com\.mysql/mysql-connector-j@.*$</packageUrl>
+    <vulnerabilityName>CVE-2026-60623</vulnerabilityName>
+  </suppress>
+
+</suppressions>

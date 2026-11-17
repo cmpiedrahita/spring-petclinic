@@ -5,7 +5,7 @@
   <parent>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
-    <version>4.1.0</version>
+    <version>4.1.2</version>
   </parent>
 
   <groupId>org.springframework.samples</groupId>
@@ -330,6 +330,9 @@
           <failBuildOnCVSS>7</failBuildOnCVSS>
           <!-- OSS Index exige cuenta en Sonatype; se desactiva -->
           <ossIndexAnalyzerEnabled>false</ossIndexAnalyzerEnabled>
+          <suppressionFiles>
+            <suppressionFile>${project.basedir}/dependency-check-suppression.xml</suppressionFile>
+          </suppressionFiles>
         </configuration>
       </plugin>
     </plugins>
